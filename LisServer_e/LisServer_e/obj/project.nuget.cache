@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "dgSpecHash": "jBIBP2pfHCLrIDhWQ/cvx4fal6/jHXBfelzo3wTx84ZP4PReMqOF36nlAqeq15nOHiBbgsUn8a+q5YUxfQkRUQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Mauricio\\source\\repos\\LisServer_e\\LisServer_e\\LisServer_e.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.2.0\\microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.2.0\\microsoft.extensions.configuration.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.2.0\\microsoft.extensions.dependencyinjection.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\2.2.0\\microsoft.extensions.fileproviders.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.2.0\\microsoft.extensions.logging.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.extensions.options\\2.2.0\\microsoft.extensions.options.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0-preview.1.20120.5\\microsoft.netcore.platforms.5.0.0-preview.1.20120.5.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.win32.registry\\5.0.0-preview.1.20120.5\\microsoft.win32.registry.5.0.0-preview.1.20120.5.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0-preview.1.20120.5\\microsoft.win32.systemevents.5.0.0-preview.1.20120.5.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\netstandard.library.netframework\\2.0.0-preview2-25405-01\\netstandard.library.netframework.2.0.0-preview2-25405-01.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.codedom\\5.0.0-preview.1.20120.5\\system.codedom.5.0.0-preview.1.20120.5.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.componentmodel.annotations\\4.5.0\\system.componentmodel.annotations.4.5.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0-preview.1.20120.5\\system.configuration.configurationmanager.5.0.0-preview.1.20120.5.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.drawing.common\\5.0.0-preview.1.20120.5\\system.drawing.common.5.0.0-preview.1.20120.5.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.management\\5.0.0-preview.1.20120.5\\system.management.5.0.0-preview.1.20120.5.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.security.accesscontrol\\5.0.0-preview.1.20120.5\\system.security.accesscontrol.5.0.0-preview.1.20120.5.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0-preview.1.20120.5\\system.security.cryptography.protecteddata.5.0.0-preview.1.20120.5.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.security.permissions\\5.0.0-preview.1.20120.5\\system.security.permissions.5.0.0-preview.1.20120.5.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.security.principal.windows\\5.0.0-preview.1.20120.5\\system.security.principal.windows.5.0.0-preview.1.20120.5.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
+    "C:\\Users\\Mauricio\\.nuget\\packages\\system.windows.extensions\\5.0.0-preview.1.20120.5\\system.windows.extensions.5.0.0-preview.1.20120.5.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'NETStandard.Library.NETFramework 2.0.0-preview2-25405-01' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "NETStandard.Library.NETFramework",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}
