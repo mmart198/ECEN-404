@@ -125,6 +125,9 @@ namespace LisServer_e.Controllers
                 else if (fmin_ComfortFactor != -999 && fmax_ComfortFactor != 0)
                 {
                     sql = $"SELECT * FROM ECEN403_BSWL.SampleData_403 WHERE MeanDiameter BETWEEN {fmin_ComfortFactor} AND {fmax_ComfortFactor};";
+                } else
+                {
+                    sql = $"SELECT * FROM ECEN403_BSWL.SampleData_403;";
                 }
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
