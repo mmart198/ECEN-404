@@ -6646,11 +6646,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mauricio\\Documents\\Not-ECEN-404-master\\Not-ECEN-404-master\\LisServer_e\\LisServer_e\\LisServer_e.csproj",
+      "projectUniqueName": "C:\\Users\\Mauricio\\Documents\\GitHub\\ECEN-404_1\\LisServer_e\\LisServer_e\\LisServer_e.csproj",
       "projectName": "LisServer_e",
-      "projectPath": "C:\\Users\\Mauricio\\Documents\\Not-ECEN-404-master\\Not-ECEN-404-master\\LisServer_e\\LisServer_e\\LisServer_e.csproj",
+      "projectPath": "C:\\Users\\Mauricio\\Documents\\GitHub\\ECEN-404_1\\LisServer_e\\LisServer_e\\LisServer_e.csproj",
       "packagesPath": "C:\\Users\\Mauricio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mauricio\\Documents\\Not-ECEN-404-master\\Not-ECEN-404-master\\LisServer_e\\LisServer_e\\obj\\",
+      "outputPath": "C:\\Users\\Mauricio\\Documents\\GitHub\\ECEN-404_1\\LisServer_e\\LisServer_e\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Mauricio\\AppData\\Roaming\\NuGet\\NuGet.Config",

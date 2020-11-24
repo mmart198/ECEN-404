@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3RW0RD0yhEi+1pNOlcVcMnzmGFN8OM8fU9bWY1m0Q2HZu7JWwPzr1o1NcNP6/+Ytgf/5+UNPdkZrDlhGxblatg==",
+  "dgSpecHash": "lvlv/xYLhus7n53UupQqbaHFY2XTCZZGjSGbAxALv6wSTXGaZykOr4Pkw7BtKnjtkymfa+CQzRJF8Ep2RGoWkA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mauricio\\Documents\\Not-ECEN-404-master\\Not-ECEN-404-master\\LisServer_e\\LisServer_e\\LisServer_e.csproj",
+  "projectFilePath": "C:\\Users\\Mauricio\\Documents\\GitHub\\ECEN-404_1\\LisServer_e\\LisServer_e\\LisServer_e.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mauricio\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\Mauricio\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",
