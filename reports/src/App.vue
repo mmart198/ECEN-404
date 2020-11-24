@@ -1,7 +1,7 @@
 <template>
   <v-app style="background:#262626;">
     <v-app-bar app color="#800000" dark>
-      <v-toolbar-title><img src="./assets/logo.png" style="max-width: 140px;margin-top: 8px;" /></v-toolbar-title>
+      <v-toolbar-title><img src="./assets/logo.png" style="max-width: 140px;margin-top: 8px; cursor: pointer;" @click="$route.fullPath === '/' ? '' : $router.push('/')"/></v-toolbar-title>
     </v-app-bar>
     <router-view></router-view>
   </v-app>

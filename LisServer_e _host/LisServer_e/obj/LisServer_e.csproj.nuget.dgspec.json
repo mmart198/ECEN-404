@@ -1,0 +1,97 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Mauricio\\Documents\\GitHub\\ECEN-404_1\\LisServer_e _host\\LisServer_e\\LisServer_e.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Mauricio\\Documents\\GitHub\\ECEN-404_1\\LisServer_e _host\\LisServer_e\\LisServer_e.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Mauricio\\Documents\\GitHub\\ECEN-404_1\\LisServer_e _host\\LisServer_e\\LisServer_e.csproj",
+        "projectName": "LisServer_e",
+        "projectPath": "C:\\Users\\Mauricio\\Documents\\GitHub\\ECEN-404_1\\LisServer_e _host\\LisServer_e\\LisServer_e.csproj",
+        "packagesPath": "C:\\Users\\Mauricio\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mauricio\\Documents\\GitHub\\ECEN-404_1\\LisServer_e _host\\LisServer_e\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mauricio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "BouncyCastle.NetCore": {
+              "target": "Package",
+              "version": "[1.8.3, )"
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.21, )"
+            },
+            "NETStandard.Library": {
+              "target": "Package",
+              "version": "[2.0.3, )"
+            },
+            "NETStandard.Library.NETFramework": {
+              "target": "Package",
+              "version": "[2.0.0-preview2-25405-01, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[5.0.0-preview.1.20120.5, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[5.0.0-preview.1.20120.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

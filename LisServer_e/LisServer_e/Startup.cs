@@ -16,7 +16,6 @@ namespace LisServer_e
 {
     public class Startup
     {
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +26,8 @@ namespace LisServer_e
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(); // Make sure you call this previous to AddMvc
+            services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddControllers();
         }
 
@@ -42,6 +43,11 @@ namespace LisServer_e
 
             app.UseRouting();
 
+            app.UseCors(builder => builder
+             .AllowAnyOrigin()
+             .AllowAnyMethod()
+             .AllowAnyHeader());
+            app.UseMvc();
 
             app.UseAuthorization();
 

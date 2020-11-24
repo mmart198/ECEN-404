@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LisServer_e", "LisServer_e\LisServer_e.csproj", "{C1E8BAC1-FD65-4939-A457-B76AE7EECE4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1E8BAC1-FD65-4939-A457-B76AE7EECE4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1E8BAC1-FD65-4939-A457-B76AE7EECE4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1E8BAC1-FD65-4939-A457-B76AE7EECE4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1E8BAC1-FD65-4939-A457-B76AE7EECE4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {398A052D-9BEA-4849-A39F-DD848E1C3CF0}
+	EndGlobalSection
+EndGlobal

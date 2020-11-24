@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mauricio\\Documents\\GitHub\\Not-ECEN-404\\LisServer_e\\LisServer_e\\LisServer_e.csproj": {}
+    "C:\\Users\\Mauricio\\Documents\\Not-ECEN-404-master\\Not-ECEN-404-master\\LisServer_e\\LisServer_e\\LisServer_e.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mauricio\\Documents\\GitHub\\Not-ECEN-404\\LisServer_e\\LisServer_e\\LisServer_e.csproj": {
+    "C:\\Users\\Mauricio\\Documents\\Not-ECEN-404-master\\Not-ECEN-404-master\\LisServer_e\\LisServer_e\\LisServer_e.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mauricio\\Documents\\GitHub\\Not-ECEN-404\\LisServer_e\\LisServer_e\\LisServer_e.csproj",
+        "projectUniqueName": "C:\\Users\\Mauricio\\Documents\\Not-ECEN-404-master\\Not-ECEN-404-master\\LisServer_e\\LisServer_e\\LisServer_e.csproj",
         "projectName": "LisServer_e",
-        "projectPath": "C:\\Users\\Mauricio\\Documents\\GitHub\\Not-ECEN-404\\LisServer_e\\LisServer_e\\LisServer_e.csproj",
+        "projectPath": "C:\\Users\\Mauricio\\Documents\\Not-ECEN-404-master\\Not-ECEN-404-master\\LisServer_e\\LisServer_e\\LisServer_e.csproj",
         "packagesPath": "C:\\Users\\Mauricio\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mauricio\\Documents\\GitHub\\Not-ECEN-404\\LisServer_e\\LisServer_e\\obj\\",
+        "outputPath": "C:\\Users\\Mauricio\\Documents\\Not-ECEN-404-master\\Not-ECEN-404-master\\LisServer_e\\LisServer_e\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mauricio\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.Owin.Host.SystemWeb": {
+              "target": "Package",
+              "version": "[4.1.1, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.21, )"
@@ -69,6 +73,10 @@
             "System.Management": {
               "target": "Package",
               "version": "[5.0.0-preview.1.20120.5, )"
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
             }
           },
           "imports": [

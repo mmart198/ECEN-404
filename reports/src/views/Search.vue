@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-content>
-      <div v-if="!storeDocuments.length" style="width: 100%;min-height: 700px; display: flex; justify-content: center; align-items: center;">
+      <div v-if="!results.length && !query" style="width: 100%;min-height: 700px; display: flex; justify-content: center; align-items: center;">
         <div class="lds-ellipsis centered-two" style="width: fit-content;background: red;">
           <div></div>
           <div></div>
@@ -10,37 +10,46 @@
         </div>
       </div>
       <div v-else style="margin-top: 40px;">
-        <div class="centered" style="width: 98%">
-          <v-text-field
-            class="slide-in-top"
-            style="width: 50%; min-width: 470px;"
-            v-if="!displayResults && !isLoading"
-            label="Solo"
-            placeholder="Search for a document"
-            solo
-            v-model="query"
-          ></v-text-field>
+        <div style="display: flex; justify-content: flex-start; align-items: center; margin-bottom: 10px; margin-left: 20px;">
+          <div style="width: 50%; margin-bottom: -30px;">
+            <v-text-field
+              class="slide-in-top"
+              style="width: 100%; min-width: 470px;"
+              v-if="!displayResults && !isLoading"
+              label="Solo"
+              placeholder="Search for a document"
+              solo
+              v-model="query"
+            ></v-text-field>
         </div>
-
+        <v-btn
+            style="margin-left: 10px;"
+            depressed
+            class="slide-in-top"
+            color="primary"
+            @click="$refs.file.click()"
+          >
+            <input type="file" ref="file" id="file" style="display: none" accept=".mes" @change="loadTextFromFile" @click="mesString = null">
+            Upload Document +
+          </v-btn>
+        </div>
         <v-data-table
           dark
           :headers="headers"
           :items="results"
           :items-per-page="5"
           class="elevation-1 slide-in-top centered"
-          style="width: 98%"
+          style="width: 98%; margin-left: 20px;"
           @click:row="viewDocument"
         ></v-data-table>
       </div>
     </v-content>
-    <v-footer color="#9e062a" app>
-      <span class="white--text">ECEN 403</span>
-    </v-footer>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
   </div>
+
 </template>
 <script>
 import Vue from "vue";
@@ -55,6 +64,7 @@ export default {
 
   data: () => ({
     query: "",
+    mesString: null,
     displayResults: false,
     isLoading: false,
     results: [],
@@ -126,7 +136,7 @@ export default {
         value: "std"
       },
       {
-        text: "CEN",
+        text: "CEM",
         align: "start",
         sortable: true,
         value: "cem"
@@ -176,6 +186,17 @@ export default {
     ]
   }),
   watch: {
+    mesString: {
+      handler(val) {
+        if (val) {
+          let requestBody = {
+            mesFile: this.mesString.split('\n')
+          }
+          axios.post('https://localhost:44352/api/upload', requestBody).then(this.$router.go(this.$router.currentRoute))
+          
+        }
+      }
+    },
     query() {
       this.search(this.query);
     },
@@ -190,10 +211,16 @@ export default {
   },
   computed: {
     storeDocuments() {
-      return this.$store.state.documents;
+      return this.$store.state.documents ? this.$store.state.documents : []
     }
   },
   methods: {
+    loadTextFromFile(ev) {
+      const file = ev.target.files[0];
+      const reader = new FileReader();
+      reader.onload = e => {this.mesString = e.target.result;}
+      reader.readAsText(file);
+    },
     viewDocument(value) {
       this.$router.push(`/results/${value.sampleID}`);
     },
@@ -236,11 +263,5 @@ export default {
 }
 .centered-two {
   margin: auto;
-}
-.centered {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%;
 }
 </style>

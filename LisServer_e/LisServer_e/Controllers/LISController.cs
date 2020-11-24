@@ -6,6 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using Microsoft.Extensions.Logging;
+using System.Net;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Web;
+using System.Text.RegularExpressions;
+using LabInfoSys;
 
 namespace LisServer_e.Controllers
 {
@@ -161,9 +167,9 @@ namespace LisServer_e.Controllers
                             data.SampleName = "null";
                     
                     //Date/Time
-                    if (HasColumn(rdr, "Date/Time"))
-                        if (rdr["Date/Time"] != DBNull.Value)
-                            data.Date_Time = (DateTime)rdr["Date/Time"]+"";
+                    if (HasColumn(rdr, "DateTime"))
+                        if (rdr["DateTime"] != DBNull.Value)
+                            data.Date_Time = (DateTime)rdr["DateTime"]+"";
                         else
                             data.Date_Time = "null";
 
@@ -316,8 +322,213 @@ namespace LisServer_e.Controllers
             }
             return false;
         }
+        [HttpPost("Upload")]
+       public void Upload([FromBody] MesRequest request)
+        {
+            System.Console.WriteLine("%^^^^^^^^^^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^");
+            string cs = @"server=Lusherengineeringservices.com;user id=ECENBSWL;database=ECEN403_BSWL;persistsecurityinfo=True;port=3315;pwd=ECENBSWL403";  //connect to mysql
+            using var con = new MySqlConnection(cs);
+            con.Open();
+            var cmd = new MySqlCommand();
+            cmd.Connection = con;
+            System.Console.WriteLine(request.mesFile);
+            List<string> lines = request.mesFile; //Read line, and split it by whitespace into an array of strings
+            col newcol = new col();
 
-       // [HttpGet("upload")]
+            string line;
+            int counter = 0;
+            int stapleindex = lines.FindIndex(a => a.Contains("**Staple"));
+            int alongindex = lines.FindIndex(a => a.Contains("**Along"));
+
+            System.Console.WriteLine("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    " + lines.Count);
+            System.Console.WriteLine(lines[0]);
+            for (int i = 0; i < lines.Count; i++)
+            {
+                line = lines[i];
+                System.Console.WriteLine();
+                if (line.Contains("****"))
+                {
+                    System.Console.WriteLine("hit me");
+                    string line12 = lines[counter + 12].Trim();
+                    string[] entry = Regex.Split(line12, @"\s+");
+
+                    //hist
+                    string line13 = lines[counter + 13].Trim();
+                    string[] entry0 = Regex.Split(line13, @"\s+");
+
+                    int mind = int.Parse(entry0[0]);
+                    int maxd = int.Parse(entry0[1]);
+                    int histdata = maxd - mind + 1;
+
+                    string hist = lines[counter + 14].Trim();
+                    string[] totalhist = Regex.Split(hist, @"\s+");
+                    int histline = counter + 14;
+                    while (totalhist.Length < histdata)
+                    {
+                        hist += " " + lines[histline + 1].Trim();
+                        totalhist = Regex.Split(hist, @"\s+");
+                        histline++;
+                    }
+                    string hist1 = hist.Replace(' ', ',');
+
+
+                    //curve = along-1
+                    int newalong = lines.FindIndex(alongindex, a => a.Contains("**Along"));
+                    alongindex = newalong + 1;
+
+                    string line37 = lines[newalong - 1].Trim();
+                    string[] entry1 = Regex.Split(line37, @"\s+");
+
+                    string sampleID = lines[counter + 1].Trim();
+                    DateTime dateTime = DateTime.Parse(lines[counter + 2] + " " + lines[counter + 3]);
+                    string date = dateTime.ToString("yyyy-MM-dd H:mm:ss");
+                    string customerName = lines[counter + 4];
+                    string sampleLog = lines[counter + 5];
+                    string companyName = lines[counter + 6];
+                    string sampleName = lines[counter + 7];
+                    int totalFiberCount = int.Parse(lines[counter + 9]);
+                    double meanDiameter = double.Parse(lines[counter + 10]);
+                    double sTD = double.Parse(lines[counter + 11]);
+                    double variationCoefficient = double.Parse(entry[0]);
+                    double cEM = double.Parse(entry[1]);
+                    double comfortFactor = double.Parse(entry[2]);
+                    double minDiameter = double.Parse(entry0[0]);
+                    double maxDiameter = double.Parse(entry0[1]);
+                    double meanCurvature = double.Parse(entry1[0]);
+                    double sDCurvature = double.Parse(entry1[1]);
+                    string fibers_Hist = hist1;
+                    customerName = Regex.Replace(customerName, @"\t|\n|\r", "");
+                    //CustomerName in MySQL
+                    //System.Console.WriteLine("INSERT INTO CustomerName (name) SELECT * FROM CustomerName WHERE NOT EXISTS (SELECT name FROM CustomerName WHERE name = '" + customerName + "')");
+                    //cmd.CommandText = "INSERT INTO CustomerName(name) SELECT* FROM CustomerName WHERE NOT EXISTS(SELECT name FROM CustomerName WHERE name = '" + customerName + "')";
+                    //cmd.ExecuteNonQuery();
+                    string sql = $"SELECT * FROM ECEN403_BSWL.CustomerName WHERE name = '{customerName}';";
+                    cmd = new MySqlCommand(sql, con);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    List<LIS> list = new List<LIS>();
+
+                    //creates array for results
+                    customerName = Regex.Replace(customerName, @"\t|\n|\r", "");
+                    string existingName = "nullName";
+                    while (rdr.Read())
+                    {
+                        if (HasColumn(rdr, "name"))
+                            if (rdr["name"] != DBNull.Value)
+                            {
+                                existingName = (string)rdr["name"];
+                            }
+                    }
+                    rdr.Close();
+                    System.Console.WriteLine(existingName + "    " + customerName);
+                    if (existingName != customerName)
+                    {
+                        cmd.CommandText = $"INSERT INTO CustomerName (name) VALUES('{customerName}');";
+                        cmd.ExecuteNonQuery();
+                    }
+                    //staple
+                    if (lines.FindIndex(a => a.Contains("**Staple")) != -1)
+                    {
+                        System.Console.WriteLine("HIT ME 2");
+                        int newstaple = lines.FindIndex(stapleindex, a => a.Contains("**Staple"));
+                        stapleindex = newstaple + 1;
+
+                        string line47 = lines[newstaple + 3].Trim();
+                        string[] entry2 = Regex.Split(line47, @"\s+");
+
+                        string line48 = lines[newstaple + 4].Trim();
+                        string[] entry3 = Regex.Split(line48, @"\s+");
+
+                        double stapleLength = double.Parse(entry2[0]);
+                        double minStaple = double.Parse(entry3[0]);
+                        double maxStaple = double.Parse(entry3[1]);
+
+                        var wool = new[]
+                        {
+                                new col {
+                                    SampleID = sampleID.Replace("'","''"),
+                                    DateTime = dateTime,
+                                    CustomerName = customerName,
+                                    SampleLog = sampleLog,
+                                    CompanyName = companyName,
+                                    SampleName = sampleName,
+                                    TotalFiberCount = totalFiberCount,
+                                    MeanDiameter = meanDiameter,
+                                    STD = sTD,
+                                    VariationCoefficient = variationCoefficient,
+                                    CEM = cEM,
+                                    ComfortFactor = comfortFactor,
+                                    MinDiameter = minDiameter,
+                                    MaxDiameter = maxDiameter,
+                                    MeanCurvature = meanCurvature,
+                                    SDCurvature = sDCurvature,
+                                    StapleLength = stapleLength,
+                                    MinStaple = minStaple,
+                                    MaxStaple = maxStaple,
+                                    Fibers_Hist = fibers_Hist
+                                }
+                            };
+                        foreach (var col in wool)
+                        {
+                            System.Console.WriteLine("INSEWRT STATEMENT");
+                            string commandtext = ($"'{col.SampleID}', '{col.SampleLog}', '{col.SampleName}', '{date}', '{col.CompanyName}', '{col.CustomerName}', " +
+                                $"'{col.TotalFiberCount}', '{col.MeanDiameter}', '{col.MinDiameter}', '{col.MaxDiameter}', '{col.STD}', '{col.VariationCoefficient}', " +
+                                $"'{col.CEM}', '{col.ComfortFactor}', '{col.MeanCurvature}', '{col.SDCurvature}', '{col.StapleLength}', '{col.MinStaple}', '{col.MaxStaple}', '{col.Fibers_Hist}'");
+                            commandtext = "INSERT INTO SampleData_403(SampleID,SampleLog,SampleName,DateTime,CompanyName,CustomerName," +
+                                "TotalFiberCount,MeanDiameter,MinDiameter,MaxDiameter,STD,VariationCoefficient,CEM,ComfortFactor,MeanCurvature,SDCurvature,StapleLength,MinStaple,MaxStaple,Fibers_Hist)" +
+                                " VALUES(" + commandtext + ")";
+                            cmd.CommandText = commandtext;
+                            cmd.ExecuteNonQuery();
+
+                            cmd.CommandText = "UPDATE SampleData_403 INNER JOIN CustomerName ON SampleData_403.CustomerName = CustomerName.name SET SampleData_403.CustomerID = CustomerName.id WHERE CustomerName.name = '" + customerName + "'";
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    else
+                    {
+                        var wool = new[]
+                        {
+                                new col {
+                                    SampleID = sampleID.Replace("'","''"),
+                                    DateTime = dateTime,
+                                    CustomerName = customerName,
+                                    SampleLog = sampleLog,
+                                    CompanyName = companyName,
+                                    SampleName = sampleName,
+                                    TotalFiberCount = totalFiberCount,
+                                    MeanDiameter = meanDiameter,
+                                    STD = sTD,
+                                    VariationCoefficient = variationCoefficient,
+                                    CEM = cEM,
+                                    ComfortFactor = comfortFactor,
+                                    MinDiameter = minDiameter,
+                                    MaxDiameter = maxDiameter,
+                                    MeanCurvature = meanCurvature,
+                                    SDCurvature = sDCurvature,
+                                    Fibers_Hist = fibers_Hist
+                                }
+                            };
+                        foreach (var col in wool)
+                        {
+                            string commandtext = ($"'{col.SampleID}', '{col.SampleLog}', '{col.SampleName}', '{date}', '{col.CompanyName}', '{col.CustomerName}', '{col.TotalFiberCount}', '{col.MeanDiameter}', '{col.MinDiameter}', '{col.MaxDiameter}', '{col.STD}', '{col.VariationCoefficient}', " +
+                                $"'{col.CEM}', '{col.ComfortFactor}', '{col.MeanCurvature}', '{col.SDCurvature}', '{col.Fibers_Hist}'");
+                            commandtext = "INSERT INTO SampleData_403(SampleID,SampleLog,SampleName,DateTime,CompanyName,CustomerName,TotalFiberCount,MeanDiameter,MinDiameter,MaxDiameter,STD,VariationCoefficient,CEM,ComfortFactor,MeanCurvature,SDCurvature,Fibers_Hist)" +
+                                " VALUES(" + commandtext + ")";
+                            cmd.CommandText = commandtext;
+                            cmd.ExecuteNonQuery();
+
+                            cmd.CommandText = "UPDATE SampleData_403 INNER JOIN CustomerName ON SampleData_403.CustomerName = CustomerName.name SET SampleData_403.CustomerID = CustomerName.id WHERE CustomerName.name = '" + customerName + "'";
+                            cmd.ExecuteNonQuery();
+
+                        }
+                    }
+
+                }
+                counter++;
+            }
+            System.Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            return;
+        }
 
 
 
